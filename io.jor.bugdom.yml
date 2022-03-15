@@ -6,6 +6,12 @@ command: Bugdom
 rename-desktop-file: bugdom.desktop
 rename-icon: bugdom-desktopicon
 
+finish-args:
+  - --socket=x11
+  - --socket=pulseaudio
+  - --device=dri
+  - --share=ipc
+
 modules:
   - name: bugdom
     buildsystem: cmake
@@ -29,10 +35,3 @@ modules:
       - install -D ./packaging/bugdom.desktop ${FLATPAK_DEST}/share/applications/bugdom.desktop
       - install -D ./packaging/bugdom-desktopicon.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/bugdom-desktopicon.png
       - install -D ./io.jor.bugdom.metainfo.xml ${FLATPAK_DEST}/share/metainfo/io.jor.bugdom.metainfo.xml
-
-finish-args:
-  - --socket=wayland
-  - --socket=fallback-x11
-  - --socket=pulseaudio
-  - --device=dri
-
