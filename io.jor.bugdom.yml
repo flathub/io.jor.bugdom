@@ -1,6 +1,6 @@
 app-id: io.jor.bugdom
 runtime: org.freedesktop.Platform
-runtime-version: '21.08'
+runtime-version: "21.08"
 sdk: org.freedesktop.Sdk
 command: Bugdom
 rename-desktop-file: bugdom.desktop
@@ -16,10 +16,13 @@ modules:
   - name: bugdom
     buildsystem: cmake
     sources:
-      - type: git 
+      - type: git
         url: https://github.com/jorio/Bugdom.git
         tag: 1.3.1
         commit: d4b5e729cf6747f1b07ee2752c824ac882f5ce5b
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
       - type: file
         path: bugdom_launcher.sh
       - type: file
