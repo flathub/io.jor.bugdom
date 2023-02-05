@@ -1,13 +1,12 @@
 app-id: io.jor.bugdom
 runtime: org.freedesktop.Platform
-runtime-version: "21.08"
+runtime-version: "22.08"
 sdk: org.freedesktop.Sdk
 command: Bugdom
-rename-desktop-file: bugdom.desktop
-rename-icon: bugdom-desktopicon
 
 finish-args:
-  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
   - --socket=pulseaudio
   - --device=dri
   - --share=ipc
@@ -18,23 +17,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/jorio/Bugdom.git
-        tag: 1.3.2
-        commit: fec530c33a08af968f97dad0c4eba09a8eb50701
+        #tag: 1.3.3 # TODO: Uncomment this for next release. For now, can't use tag '1.3.3' because it lacks AppStream stuff.
+        commit: bdacc253cc93c0f4c3b16a056ed70001ac26cfd3
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
       - type: file
         path: bugdom_launcher.sh
-      - type: file
-        path: io.jor.bugdom.metainfo.xml
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
     no-make-install: true
     build-commands:
       - install -D bugdom_launcher.sh ${FLATPAK_DEST}/bin/Bugdom
       - mkdir -p ${FLATPAK_DEST}/bugdom
-      - install -D ${FLATPAK_BUILDER_BUILDDIR}/Bugdom ${FLATPAK_DEST}/bugdom/Bugdom
       - cp -r ./Data ${FLATPAK_DEST}/bugdom
-      - install -D ./packaging/bugdom.desktop ${FLATPAK_DEST}/share/applications/bugdom.desktop
-      - install -D ./packaging/bugdom-desktopicon.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/bugdom-desktopicon.png
-      - install -D ./io.jor.bugdom.metainfo.xml ${FLATPAK_DEST}/share/metainfo/io.jor.bugdom.metainfo.xml
+      - install -D ${FLATPAK_BUILDER_BUILDDIR}/Bugdom       ${FLATPAK_DEST}/bugdom/Bugdom
+      - install -D ./packaging/io.jor.bugdom.desktop        ${FLATPAK_DEST}/share/applications/io.jor.bugdom.desktop
+      - install -D ./packaging/io.jor.bugdom.png            ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/io.jor.bugdom.png
+      - install -D ./packaging/io.jor.bugdom.appdata.xml    ${FLATPAK_DEST}/share/metainfo/io.jor.bugdom.appdata.xml
