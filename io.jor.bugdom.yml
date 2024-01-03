@@ -1,6 +1,6 @@
 app-id: io.jor.bugdom
 runtime: org.freedesktop.Platform
-runtime-version: "22.08"
+runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 command: Bugdom
 
@@ -29,9 +29,10 @@ modules:
       - type: git
         url: https://github.com/jorio/Bugdom.git
         #tag: 1.3.3 # TODO: Uncomment this for next release. For now, can't use tag '1.3.3' because it lacks AppStream stuff.
-        commit: bdacc253cc93c0f4c3b16a056ed70001ac26cfd3
+        commit: 18b413f8636010b373adbd1ea4de4a660d5eefdc
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
+        tag: 1.3.4
       - type: file
         path: bugdom_launcher.sh
