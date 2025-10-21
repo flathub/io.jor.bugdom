@@ -1,6 +1,6 @@
 app-id: io.jor.bugdom
 runtime: org.freedesktop.Platform
-runtime-version: "24.08"
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: Bugdom
 
@@ -32,5 +32,6 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
+        commit: 18b413f8636010b373adbd1ea4de4a660d5eefdc
       - type: file
         path: bugdom_launcher.sh
