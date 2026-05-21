@@ -1,6 +1,6 @@
 app-id: io.jor.bugdom
 runtime: org.freedesktop.Platform
-runtime-version: "24.08"
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
 command: Bugdom
 
@@ -29,6 +29,7 @@ modules:
       - type: git
         url: https://github.com/jorio/Bugdom.git
         tag: 1.3.4
+        commit: 18b413f8636010b373adbd1ea4de4a660d5eefdc
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
